@@ -1,0 +1,8 @@
+<Solution>
+  <Project Path="../Etl.ApiSimulada/Etl.ApiSimulada.csproj" Id="abd3a668-4a97-4ce4-903e-cfbe655d2f29" />
+  <Project Path="../ETL.Application/Etl.Aplicacion.csproj" Id="268b9db3-e873-4f72-80c7-d6844211cf9a" />
+  <Project Path="../ETL.Domain/Etl.Dominio.csproj" Id="cd2e7a96-795e-4e5c-b1d9-50a0edf0e47a" />
+  <Project Path="../Etl.Infrastructure/Etl.Infraestructura.csproj" Id="7164ad71-6466-423e-89d1-fc39bc4170a9" />
+  <Project Path="../Etl.Worker/Etl.Worker.csproj" Id="93377119-cfbc-40e7-9a90-59d6d4fec8fe" />
+  <Project Path="CargaBaseDatosTrasaccional.csproj" />
+</Solution>
