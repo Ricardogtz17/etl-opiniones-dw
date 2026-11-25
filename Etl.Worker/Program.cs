@@ -36,9 +36,12 @@ builder.Services.AddSingleton(DefinicionesStaging.Comentarios);
 builder.Services.AddTransient<IDataLoader<EncuestaInterna>, DataLoader<EncuestaInterna>>();
 builder.Services.AddTransient<IDataLoader<ResenaWeb>, DataLoader<ResenaWeb>>();
 builder.Services.AddTransient<IDataLoader<ComentarioSocial>, DataLoader<ComentarioSocial>>();
+builder.Services.AddTransient<ICargadorDimensiones, CargadorDimensiones>();
 
 builder.Services.AddTransient<OrquestadorExtraccion>();
 builder.Services.AddHostedService<ServicioExtraccion>();
+
+
 
 var host = builder.Build();
 host.Run();

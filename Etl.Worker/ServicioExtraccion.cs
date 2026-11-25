@@ -1,4 +1,5 @@
 ﻿using Etl.Aplicacion.Servicios;
+using Etl.Aplicacion.Interfaces;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -42,6 +43,18 @@ namespace Etl.Worker
                                 r.Fuente, r.RegistrosCargados, r.Duracion.TotalSeconds);
                         else
                             _logger.LogError("{Fuente}: FALLÓ ({Error})", r.Fuente, r.Error);
+                    }
+
+                    var cargador = scope.ServiceProvider.GetRequiredService<ICargadorDimensiones>();
+                    try
+                    {
+                        var conteos = await cargador.CargarAsync(stoppingToken);
+                        foreach (var (tabla, filas) in conteos)
+                            _logger.LogInformation("Dimension {Tabla} : {Filas} filas", tabla, filas);
+                    }
+                    catch (Exception ex) when (ex is not OperationCanceledException)
+                    {
+                        _logger.LogError(ex, "Fallo la carga de dimensiones");
                     }
 
                     if (intervaloMinutos <= 0) break;
